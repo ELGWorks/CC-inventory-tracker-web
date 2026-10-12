@@ -5,13 +5,13 @@
 @section('content')
 <style>@keyframes slideIn{from{transform:translateX(100%)}to{transform:translateX(0)}}</style>
 
-    <div class="fixed top-0 right-0 bottom-0 z-100 flex justify-end cursor-pointer backdrop-blur-sm"
-         style="left:250px;background:rgba(26,26,46,.4)"
-         onclick="window.location.href='{{ url('/dashboard') }}'">
+    
 
-        <div class="w-[380px] max-w-[90vw] h-screen bg-card rounded-l-[20px] px-7 py-8 flex flex-col cursor-default text-ink"
-             style="box-shadow:-8px 0 40px rgba(0,0,0,.18);animation:slideIn .22s ease-out"
-             onclick="event.stopPropagation()">
+
+<div class="w-full min-w-0">
+    <div class="w-full rounded-xl border border-line bg-card p-7">
+
+
 
             {{-- Header --}}
             <div class="flex items-center gap-3 mb-7 pb-5 border-b-[1.5px] border-line">
@@ -157,7 +157,7 @@
                     </div>
 
                     <button type="button" onclick="saveSystemSettings()"
-                            class="w-full h-9 rounded-lg bg-accent text-white text-[13px] font-bold border-0 cursor-pointer transition-opacity duration-150 hover:opacity-90">
+                            class="w-fit h-8 px-4 rounded-lg bg-accent text-white text-[12px] font-bold border-0 cursor-pointer transition-opacity duration-150 hover:opacity-90">
                         Save Settings
                     </button>
                 </div>
@@ -193,7 +193,7 @@
             <div class="mt-auto pt-5 border-t-[1.5px] border-line">
                 <form method="POST" action="{{ route('logout') }}">
                     @csrf
-                    <button type="submit" class="flex items-center justify-center gap-2.5 w-full h-[50px] bg-transparent text-red-600 border-[1.5px] border-red-600 rounded-xl text-[15px] font-bold font-sans cursor-pointer transition-all duration-150 hover:bg-red-600 hover:text-white">
+                    <button type="submit" class="inline-flex items-center justify-center gap-2 w-fit h-10 px-4 bg-transparent text-red-600 border-[1.5px] border-red-600 rounded-lg text-[13px] font-bold font-sans cursor-pointer transition-all duration-150 hover:bg-red-600 hover:text-white">
                         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/>
                             <polyline points="16 17 21 12 16 7"/>
