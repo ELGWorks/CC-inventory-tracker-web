@@ -198,6 +198,85 @@
     padding: 12px 16px;
 }
 
+/* ══ MOBILE ═══ */
+@media (max-width: 768px) {
+    /* Tabs: one swipeable row, Add button stays pinned on the right */
+    .business-tabs {
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        gap: 2px;
+        margin-bottom: 16px;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+    }
+    .business-tabs::-webkit-scrollbar { display: none; }
+    .business-tab { flex: 0 0 auto; white-space: nowrap; min-height: 44px; }
+    .add-business-btn {
+        flex: 0 0 auto;
+        white-space: nowrap;
+        position: sticky;
+        right: 0;
+        margin-left: auto;
+        background: var(--accent);
+        box-shadow: -8px 0 8px -4px var(--bg);
+    }
+
+    .business-content { gap: 16px; }
+
+    @media (max-width: 768px) {
+    .business-bar { display: flex; flex-direction: column; gap: 12px; margin-bottom: 16px; }
+    .business-bar .business-tabs { margin-bottom: 0; }
+    .business-bar .add-business-btn {
+        order: -1;
+        position: static;
+        width: 100%;
+        margin-left: 0;
+        justify-content: center;
+        box-shadow: none;
+        min-height: 44px;
+    }
+}
+
+@media (min-width: 769px) {
+    .business-bar {
+        display: flex; flex-wrap: wrap; align-items: center;
+        border-bottom: 1px solid var(--border); margin-bottom: 24px; gap: 5px;
+    }
+    .business-bar .business-tabs { border-bottom: 0; margin-bottom: 0; flex: 1; }
+    .business-bar .add-business-btn { margin-left: auto; order: 2; }
+}
+
+    /* Cards */
+    .business-info,
+    .recipes-panel { padding: 16px; border-radius: 12px; }
+    .business-info__details { padding: 14px; }
+    .business-info__actions { flex-direction: column; gap: 8px; }
+    .business-info__actions > * { width: 100%; }
+    .btn-outline, .btn-danger { min-height: 44px; }
+
+    /* Recipes panel */
+    .recipes-panel__header { flex-wrap: wrap; gap: 10px; }
+    .recipes-search { width: 100%; box-sizing: border-box; }
+    .recipes-search input { width: 100%; min-width: 0; }
+    .recipes-categories {
+        gap: 14px;
+        overflow-x: auto;
+        white-space: nowrap;
+        scrollbar-width: none;
+    }
+    .recipes-categories::-webkit-scrollbar { display: none; }
+    .recipe-ingredients { grid-template-columns: 1fr; gap: 2px 0; }
+    .recipe-ingredients dd { margin-bottom: 8px; }
+    .recipes-footer { text-align: center; }
+    .btn-edit-recipe { width: 100%; box-sizing: border-box; text-align: center; }
+
+    /* Modals */
+    .modal-content { padding: 20px; width: 94%; max-height: 92dvh; }
+    .form-row { grid-template-columns: 1fr; gap: 14px; margin-bottom: 14px; }
+    .form-group.full-width { grid-column: auto; }
+    .btn-submit { width: 100%; }
+}
+
 @media (max-width: 420px) {
     .disown-modal-content {
         padding: 24px 18px;
@@ -223,18 +302,20 @@
     </div>
 @endif
 
-<div class="business-tabs">
-    @foreach($branches as $branch)
-        <button class="business-tab {{ $loop->first ? 'active' : '' }}"
-                data-branch-id="{{ $branch->id }}"
-                onclick="switchBranch({{ $branch->id }}, this)">
-            {{ $branch->name }}
-        </button>
-    @endforeach
+<div class="business-bar">
     <button class="add-business-btn" onclick="openAddBusinessModal()">
         <span>＋</span>
         Add Business
     </button>
+    <div class="business-tabs">
+        @foreach($branches as $branch)
+            <button class="business-tab {{ $loop->first ? 'active' : '' }}"
+                    data-branch-id="{{ $branch->id }}"
+                    onclick="switchBranch({{ $branch->id }}, this)">
+                {{ $branch->name }}
+            </button>
+        @endforeach
+    </div>
 </div>
 
 <div class="business-content">

@@ -12,25 +12,47 @@
     @media (max-width: 1024px) { .crm-grid { grid-template-columns: 1fr; } }
 
     /* Loyalty tier cards */
+.crm-tiers {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 24px;
+}
+.crm-tier-card {
+    flex: 1;
+    min-width: 0;
+    padding: 16px;
+    border-radius: 12px;
+    border: 1.5px solid var(--border);
+    background: #fff;
+    cursor: pointer;
+    transition: all .15s;
+}
+.crm-tier-card:hover { border-color: var(--accent); }
+.crm-tier-card.active { border-color: var(--accent); background: var(--color-accent-light); }
+.crm-tier-card__icon { font-size: 20px; margin-bottom: 8px; }
+.crm-tier-card__value { font-size: 24px; font-weight: 800; color: var(--text); }
+.crm-tier-card__label { font-size: 11px; font-weight: 600; color: var(--text-3); text-transform: uppercase; letter-spacing: .04em; margin-top: 4px; }
+
+/* Mobile: 2-column grid, "All Customers" spans the full row */
+@media (max-width: 768px) {
     .crm-tiers {
-        display: flex;
-        gap: 12px;
-        margin-bottom: 24px;
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 10px;
+        margin-bottom: 16px;
     }
     .crm-tier-card {
-        flex: 1;
-        padding: 16px;
-        border-radius: 12px;
-        border: 1.5px solid var(--border);
-        background: #fff;
-        cursor: pointer;
-        transition: all .15s;
+        padding: 12px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
     }
-    .crm-tier-card:hover { border-color: var(--accent); }
-    .crm-tier-card.active { border-color: var(--accent); background: var(--color-accent-light); }
-    .crm-tier-card__icon { font-size: 20px; margin-bottom: 8px; }
-    .crm-tier-card__value { font-size: 24px; font-weight: 800; color: var(--text); }
-    .crm-tier-card__label { font-size: 11px; font-weight: 600; color: var(--text-3); text-transform: uppercase; letter-spacing: .04em; margin-top: 4px; }
+    .crm-tier-card:first-child { grid-column: 1 / -1; }
+    .crm-tier-card__icon { font-size: 18px; margin-bottom: 4px; }
+    .crm-tier-card__value { font-size: 22px; line-height: 1.1; }
+    .crm-tier-card__label { font-size: 10px; }
+}
 
     /* Customer cards — people-centric */
     .crm-customer-card {
