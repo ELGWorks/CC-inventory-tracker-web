@@ -288,7 +288,7 @@
                         </div>
                         <div>
                             <div class="crm-customer-name">{{ $cust->name }}</div>
-                            <div class="crm-customer-contact">{{ $cust->email ?? '—' }} {{ $cust->phone ? '· ' . $cust->phone : '' }}</div>
+                            <div class="crm-customer-contact">{{ $cust->email ?? '—' }} <br /> {{ $cust->phone ? $cust->phone : '' }}</div>
                         </div>
                         <span class="crm-customer-tier {{ $cust->tier }}">{{ ucfirst($cust->tier) }}</span>
                     </div>

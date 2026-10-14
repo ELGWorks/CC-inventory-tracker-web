@@ -416,7 +416,6 @@
     .account-span {
         display: flex;
         flex-direction: column;
-        align-items: center;
     }
 
     .topbar__user:hover { background: rgba(92, 45, 27, 0.07); }

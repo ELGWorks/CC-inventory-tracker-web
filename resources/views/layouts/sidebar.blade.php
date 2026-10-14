@@ -910,7 +910,8 @@
                 <a href="{{ route('settings') }}" class="topbar__user">
                     <span class="avatar">{{ $initials }}</span>
                     <span class="account-span">
-                        <span class="topbar__user-name">{{ $user->name }}</span><br>
+                        <span class="topbar__user-name">{{ $user->name }}</span>
+                        <br />
                         <span class="topbar__user-email">{{ $user->email }}</span>
                     </span>
                 </a>
